@@ -1,0 +1,5 @@
+.vscode
+/venv
+.env
+app/products.db
+app/scraper.log

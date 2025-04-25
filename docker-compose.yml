@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  api:
+    build: .
+    ports:
+      - "8001:8000"  # Cambiado de 8000:8000 a 8001:8000 para evitar conflictos
+    volumes:
+      - ./app:/app
+    environment:
+      - DATABASE_URL=sqlite:///./products.db
+      - HOST=0.0.0.0
+      - PORT=8000
+    command: python main.py --host 0.0.0.0 --port 8000
+    # Para ejecutar el scraper después de iniciar el contenedor:
+    # docker-compose exec api python main.py --scrape --url https://books.toscrape.com --pages 5

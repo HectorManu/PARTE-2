@@ -1,0 +1,4 @@
+# Variables de entorno locales
+DATABASE_URL=
+HOST=127.0.0.1
+PORT=8000
