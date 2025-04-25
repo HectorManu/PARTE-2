@@ -16,6 +16,11 @@ if SQLALCHEMY_DATABASE_URL.startswith("postgres:"):
     SQLALCHEMY_DATABASE_URL = SQLALCHEMY_DATABASE_URL.replace("postgres:", "postgresql:", 1)
 
 try:
+    # Configurar argumentos de conexión según el tipo de base de datos
+    connect_args = {}
+    if SQLALCHEMY_DATABASE_URL.startswith("sqlite"):
+        connect_args = {"check_same_thread": False}
+    
     engine = create_engine(
         SQLALCHEMY_DATABASE_URL, connect_args=connect_args
     )
